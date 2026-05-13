@@ -64,7 +64,7 @@ export default function HomePage() {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
               Byggfirma i Järfälla — sedan {BRAND.founded}
             </p>
-            <h1 className="mt-3 font-display text-4xl font-bold leading-[1.05] md:text-5xl lg:text-[60px]">
+            <h1 className="mt-3 font-display text-4xl font-bold leading-[1.05] text-white md:text-5xl lg:text-[60px]">
               Renovera badrum, kök eller hela hemmet — med ett företag som tar
               ansvar.
             </h1>
@@ -383,7 +383,7 @@ export default function HomePage() {
       <section className="bg-[color:var(--color-dark)] py-16 text-white md:py-20">
         <Container className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="font-display text-3xl font-bold md:text-[40px]">
+            <h2 className="font-display text-3xl font-bold text-white md:text-[40px]">
               Berätta om ditt projekt
             </h2>
             <p className="mt-3 max-w-2xl text-[17px] text-white/85">

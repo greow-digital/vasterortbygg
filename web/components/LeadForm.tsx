@@ -42,7 +42,7 @@ export function LeadForm({ title = "Begär kostnadsfri offert" }: { title?: stri
 
   if (submitted) {
     return (
-      <div className="rounded-[10px] bg-white p-6 shadow-lg shadow-black/10">
+      <div className="rounded-[10px] bg-white p-6 text-[color:var(--color-dark)] shadow-lg shadow-black/10">
         <h3 className="font-display text-xl font-semibold">Tack!</h3>
         <p className="mt-2 text-sm text-[color:var(--color-dark)]/80">
           Vi återkommer inom kort för att boka in ett kostnadsfritt möte och
@@ -60,7 +60,7 @@ export function LeadForm({ title = "Begär kostnadsfri offert" }: { title?: stri
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="rounded-[10px] bg-white p-6 shadow-lg shadow-black/10"
+      className="rounded-[10px] bg-white p-6 text-[color:var(--color-dark)] shadow-lg shadow-black/10"
     >
       <h3 className="font-display text-xl font-semibold">{title}</h3>
       <p className="mt-1 text-sm text-[color:var(--color-dark)]/70">
