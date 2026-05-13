@@ -39,49 +39,50 @@ const PROCESS = [
 export default function HomePage() {
   return (
     <>
-      {/* === HERO (asymmetric 7/5, no overlay) === */}
-      <section className="bg-stone-50">
-        <Container className="pt-16 pb-20 md:pt-24 md:pb-24">
-          <div className="grid items-end gap-10 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-7">
-              <p className="text-[11px] tracking-[0.14em] uppercase text-stone-500 font-medium">
-                Byggfirma i Järfälla · sedan 1998
-              </p>
-              <h1 className="mt-6 max-w-[18ch] font-serif text-[40px] leading-[1.05] text-slate-900 md:text-[52px] lg:text-[60px]">
-                Renoveringar som håller — i 28 år och framåt.
-              </h1>
-              <p className="mt-7 max-w-[52ch] text-[17px] leading-relaxed text-slate-500 md:text-[18px]">
-                BKR-behörig badrumsrenovering, kök, totalrenovering och
-                stambyte i hela Storstockholm. Återkommande kunder är det
-                bästa vi vet — och det vi mäter oss mot.
-              </p>
-              <div className="mt-10 flex flex-wrap gap-3">
-                <CtaButton href="/offert" variant="primary" size="lg">
-                  {BRAND.primaryCta}
-                </CtaButton>
-                <CtaButton href={`tel:${BRAND.phoneTel}`} variant="secondary" size="lg">
-                  Ring {BRAND.phone}
-                </CtaButton>
-              </div>
-            </div>
-
-            <div className="lg:col-span-5">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-stone-200">
-                <Image
-                  src="/hero.png"
-                  alt="Badrumsrenovering med ribbad kalksten, valnötskommod och svartram-dusch"
-                  fill
-                  priority
-                  fetchPriority="high"
-                  sizes="(min-width: 1024px) 40vw, 100vw"
-                  className="object-cover"
-                />
+      {/* === HERO (full-bleed image + solid text card) === */}
+      <section className="relative isolate overflow-hidden bg-slate-900">
+        <Image
+          src="/hero.png"
+          alt="Badrumsrenovering med ribbad kalksten, valnötskommod och svartram-dusch"
+          fill
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          className="object-cover"
+        />
+        <Container className="relative">
+          <div className="grid min-h-[640px] items-center py-20 md:min-h-[680px] md:py-24 lg:grid-cols-12 lg:py-28">
+            <div className="lg:col-span-7 xl:col-span-6">
+              <div className="rounded-xl bg-stone-50 p-8 shadow-md md:p-12">
+                <p className="text-[11px] tracking-[0.14em] uppercase text-stone-500 font-medium">
+                  Byggfirma i Järfälla · sedan 1998
+                </p>
+                <h1 className="mt-5 max-w-[18ch] font-serif text-[36px] leading-[1.05] text-slate-900 md:text-[48px] lg:text-[56px]">
+                  Renoveringar som håller — i 28 år och framåt.
+                </h1>
+                <p className="mt-6 max-w-[52ch] text-[16px] leading-relaxed text-slate-500 md:text-[18px]">
+                  BKR-behörig badrumsrenovering, kök, totalrenovering och
+                  stambyte i hela Storstockholm. Återkommande kunder är det
+                  bästa vi vet — och det vi mäter oss mot.
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <CtaButton href="/offert" variant="primary" size="lg">
+                    {BRAND.primaryCta}
+                  </CtaButton>
+                  <CtaButton href={`tel:${BRAND.phoneTel}`} variant="secondary" size="lg">
+                    Ring {BRAND.phone}
+                  </CtaButton>
+                </div>
               </div>
             </div>
           </div>
+        </Container>
+      </section>
 
-          {/* Trust band */}
-          <div className="mt-20 grid grid-cols-2 gap-8 border-t border-stone-200 pt-10 md:grid-cols-4">
+      {/* === TRUST BAND === */}
+      <section className="bg-stone-50 border-b border-stone-200">
+        <Container className="py-12 md:py-16">
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             <TrustStat number="28" label="år i branschen" />
             <TrustStat number="BKR" label="behörig våtrum" />
             <TrustStat number="AAA" label="kreditrating" />
