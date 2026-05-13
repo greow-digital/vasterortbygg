@@ -1,0 +1,11 @@
+.DS_Store
+
+# Next.js — also ignored by web/.gitignore but belt-and-suspenders
+web/node_modules
+web/.next
+web/out
+web/tsconfig.tsbuildinfo
+
+# Local editor / IDE
+.vscode
+.idea
