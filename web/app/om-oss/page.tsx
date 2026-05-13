@@ -4,6 +4,7 @@ import { BRAND, CERTIFICATIONS } from "@/lib/brand";
 import { Container } from "@/components/Container";
 import { CtaButton } from "@/components/CtaButton";
 import { PageHero } from "@/components/PageHero";
+import { TrustStat } from "@/components/TrustStat";
 
 export const metadata: Metadata = {
   title: "Om Västerorts Bygg — byggföretag i Järfälla sedan 1998",
@@ -12,10 +13,10 @@ export const metadata: Metadata = {
 };
 
 const STATS = [
-  { label: "År i branschen", value: `${BRAND.yearsInBusiness} år` },
-  { label: "Branscherfarenhet (VD)", value: `${BRAND.industryYears} år` },
-  { label: "Anställda", value: `${BRAND.employees}` },
-  { label: "Kreditrating", value: "AAA" },
+  { number: `${BRAND.yearsInBusiness}`, label: "år i branschen" },
+  { number: `${BRAND.industryYears}`, label: "branscherfarenhet (VD)" },
+  { number: `${BRAND.employees}`, label: "anställda" },
+  { number: "AAA", label: "kreditrating" },
 ];
 
 export default function OmOssPage() {
@@ -28,23 +29,26 @@ export default function OmOssPage() {
         crumbs={[{ label: "Start", href: "/" }, { label: "Om oss" }]}
       />
 
-      <section className="py-14 md:py-20">
-        <Container className="grid gap-10 md:grid-cols-[1.3fr_1fr]">
+      <section className="py-20 md:py-24">
+        <Container className="grid gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
           <div>
-            <h2 className="font-display text-2xl font-bold md:text-3xl">Det här gör vi</h2>
-            <div className="mt-4 space-y-4 text-[17px] leading-relaxed text-[color:var(--color-dark)]/85">
+            <p className="text-[11px] tracking-[0.14em] uppercase text-stone-500 font-medium">Det här gör vi</p>
+            <h2 className="mt-4 font-serif text-[28px] leading-tight text-slate-900 md:text-[32px]">
+              Om- och tillbyggnad, service och underhåll — i hela Storstockholm
+            </h2>
+            <div className="mt-6 space-y-5 text-[17px] leading-relaxed text-slate-700">
               <p>
-                Västerorts Bygg utför om- och tillbyggnader, service och underhåll
-                av bostäder, fastigheter och kontor — till fastighetsägare,
-                bostadsrättsföreningar och villaägare. Vi arbetar över hela
-                Storstockholm och har fullutrustade servicebilar som ständigt
-                rullar.
+                Västerorts Bygg utför om- och tillbyggnader, service och
+                underhåll av bostäder, fastigheter och kontor — till
+                fastighetsägare, bostadsrättsföreningar och villaägare. Vi
+                arbetar över hela Storstockholm och har fullutrustade
+                servicebilar som ständigt rullar.
               </p>
               <p>
                 Vi är måna om att ha ett nära samarbete med våra kunder. Med
-                erfarenhet och kunskap hjälper vi till med tips och förslag och
-                lotsar kunden genom hela byggprocessen — från första bedömning
-                till slutbesiktning.
+                erfarenhet och kunskap hjälper vi till med tips och förslag
+                och lotsar kunden genom hela byggprocessen — från första
+                bedömning till slutbesiktning.
               </p>
               <p>
                 Företaget har bedrivits sedan 2005 och totalt har vi 35 års
@@ -52,34 +56,36 @@ export default function OmOssPage() {
               </p>
             </div>
           </div>
-          <dl className="grid grid-cols-2 gap-5 self-start">
+          <dl className="grid grid-cols-2 gap-10 self-start">
             {STATS.map((s) => (
-              <div key={s.label} className="rounded-[10px] bg-[color:var(--color-bg-light)] p-5">
-                <dt className="text-sm text-[color:var(--color-dark)]/70">{s.label}</dt>
-                <dd className="mt-1 font-display text-3xl font-bold">{s.value}</dd>
+              <div key={s.label}>
+                <TrustStat number={s.number} label={s.label} />
               </div>
             ))}
           </dl>
         </Container>
       </section>
 
-      <section className="bg-[color:var(--color-bg-light)] py-14 md:py-20">
-        <Container className="grid gap-10 md:grid-cols-[1fr_1.2fr]">
+      <section className="bg-stone-100 py-20 md:py-24">
+        <Container className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
           <div>
-            <h2 className="font-display text-2xl font-bold md:text-3xl">Vår kvalitetspolicy</h2>
-            <p className="mt-3 text-sm text-[color:var(--color-dark)]/70">— från vasterortsbygg.se, ordagrant</p>
+            <p className="text-[11px] tracking-[0.14em] uppercase text-stone-500 font-medium">Kvalitetspolicy</p>
+            <h2 className="mt-4 font-serif text-[28px] leading-tight text-slate-900 md:text-[32px]">
+              Vår kvalitetspolicy
+            </h2>
+            <p className="mt-4 text-[14px] text-stone-500">— från vasterortsbygg.se, ordagrant</p>
           </div>
-          <blockquote className="rounded-[10px] bg-white p-6 text-[17px] leading-relaxed text-[color:var(--color-dark)]/90 md:text-lg">
-            <p className="italic">
-              &ldquo;Att utföra ett arbete som är komplett och felfritt till en
-              rimlig kostnad samt göra varje beställare till en referens. Detta
-              uppnår vi genom god kunskap, erfarenhet och noggrannhet. Vi
-              arbetar alltid med de senaste verktyg och material från de
+          <blockquote className="border-l-2 border-sand-400 pl-8">
+            <p className="font-serif text-[22px] leading-relaxed text-slate-900 md:text-[26px]">
+              &ldquo;Att utföra ett arbete som är komplett och felfritt till
+              en rimlig kostnad samt göra varje beställare till en referens.
+              Detta uppnår vi genom god kunskap, erfarenhet och noggrannhet.
+              Vi arbetar alltid med de senaste verktyg och material från de
               marknadsledande leverantörerna.&rdquo;
             </p>
-            <footer className="mt-5 text-sm text-[color:var(--color-dark)]/70">
-              Tre kvalitetslöften:
-              <ul className="mt-2 list-disc space-y-1 pl-5">
+            <footer className="mt-8 text-[15px] leading-relaxed text-slate-500">
+              <div className="font-medium text-slate-700">Tre kvalitetslöften</div>
+              <ul className="mt-3 list-disc space-y-1 pl-5">
                 <li>Vi följer överenskommen tidplan.</li>
                 <li>Arbetet blir korrekt utfört.</li>
                 <li>Du som kund blir nöjd.</li>
@@ -89,38 +95,38 @@ export default function OmOssPage() {
         </Container>
       </section>
 
-      <section className="py-14 md:py-20">
+      <section className="py-20 md:py-24">
         <Container>
-          <h2 className="font-display text-2xl font-bold md:text-3xl">Daniel och teamet</h2>
-          <div className="mt-6 grid gap-10 md:grid-cols-[1fr_1.3fr]">
-            <div className="rounded-[10px] bg-[color:var(--color-bg-light)] p-6">
-              <div className="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-dark)]/60">
-                VD & kontaktperson
-              </div>
-              <div className="mt-2 font-display text-2xl font-bold">{BRAND.ceo}</div>
-              <p className="mt-3 text-sm text-[color:var(--color-dark)]/80">
+          <p className="text-[11px] tracking-[0.14em] uppercase text-stone-500 font-medium">Teamet</p>
+          <h2 className="mt-4 font-serif text-[28px] leading-tight text-slate-900 md:text-[32px]">
+            Daniel och de andra
+          </h2>
+          <div className="mt-10 grid gap-8 md:grid-cols-[1fr_1.3fr]">
+            <div className="rounded-lg border border-stone-200 bg-white p-7">
+              <div className="text-[11px] tracking-[0.14em] uppercase text-stone-500 font-medium">VD & kontaktperson</div>
+              <h3 className="mt-3 font-serif text-[22px] leading-tight text-slate-900">{BRAND.ceo}</h3>
+              <p className="mt-4 text-[15px] leading-relaxed text-slate-500">
                 35 års erfarenhet i byggbranschen. Daniel är din kontaktperson
                 från första mötet till slutbesiktningen.
               </p>
-              <p className="mt-3 text-sm">
-                <a href={`tel:${BRAND.phoneTel}`} className="font-semibold text-[color:var(--color-primary)]">
+              <p className="mt-4 text-[15px]">
+                <a href={`tel:${BRAND.phoneTel}`} className="tnum font-medium text-slate-800 underline underline-offset-4 decoration-1 hover:decoration-sand-400 hover:decoration-2">
                   {BRAND.phone}
                 </a>
-                {" · "}
-                <a href={`mailto:${BRAND.email}`} className="font-semibold text-[color:var(--color-primary)]">
+                <span className="text-stone-400">  ·  </span>
+                <a href={`mailto:${BRAND.email}`} className="font-medium text-slate-800 underline underline-offset-4 decoration-1 hover:decoration-sand-400 hover:decoration-2">
                   {BRAND.email}
                 </a>
               </p>
             </div>
-            <div className="rounded-[10px] border border-dashed border-[color:var(--color-border)] p-6 text-sm text-[color:var(--color-dark)]/70">
-              {/* TODO_CONTENT: lägg in personalbilder + korta intro per snickare
-                  (verifiera namn och tillstånd med Daniel innan publicering). */}
-              <h3 className="font-display text-lg font-semibold text-[color:var(--color-dark)]">Teamet</h3>
-              <p className="mt-2">
+            <div className="rounded-lg border border-dashed border-stone-300 p-7">
+              {/* TODO_CONTENT: lägg in personalbilder + korta intro per snickare (verifiera namn och tillstånd med Daniel). */}
+              <h3 className="font-serif text-[22px] leading-tight text-slate-900">Snickarteamet</h3>
+              <p className="mt-4 text-[15px] leading-relaxed text-slate-500">
                 Vi är sex personer i teamet. Personalbilder och korta intro
                 läggs upp så fort vi har tillstånd från alla.
               </p>
-              <p className="mt-3">
+              <p className="mt-3 text-[15px] leading-relaxed text-slate-500">
                 Alla i teamet är ID06-registrerade och tätskiktsarbete utförs
                 av BKR-behörig personal.
               </p>
@@ -129,19 +135,16 @@ export default function OmOssPage() {
         </Container>
       </section>
 
-      <section className="bg-[color:var(--color-bg-light)] py-14 md:py-20">
+      <section className="bg-stone-100 py-20 md:py-24">
         <Container>
-          <h2 className="font-display text-2xl font-bold md:text-3xl">Behörigheter & medlemskap</h2>
-          <p className="mt-3 max-w-2xl text-[17px] text-[color:var(--color-dark)]/85">
-            Det formella förtroendet på plats. Detaljerad genomgång finns på{" "}
-            <a href="/garantier" className="text-[color:var(--color-primary)] underline underline-offset-4">
-              /garantier
-            </a>.
-          </p>
-          <ul className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <p className="text-[11px] tracking-[0.14em] uppercase text-stone-500 font-medium">Behörigheter</p>
+          <h2 className="mt-4 max-w-[24ch] font-serif text-[28px] leading-tight text-slate-900 md:text-[32px]">
+            Det formella förtroendet på plats
+          </h2>
+          <ul className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {CERTIFICATIONS.map((c) => (
-              <li key={c.short} className="flex items-start gap-4 rounded-[10px] bg-white p-5">
-                <div className="grid h-16 w-16 shrink-0 place-items-center rounded bg-[color:var(--color-bg-light)] p-2">
+              <li key={c.short} className="flex items-start gap-4 rounded-lg border border-stone-200 bg-white p-6">
+                <div className="grid h-16 w-16 shrink-0 place-items-center rounded-sm bg-stone-50 p-2">
                   <Image
                     src={c.img}
                     alt={c.name}
@@ -151,8 +154,8 @@ export default function OmOssPage() {
                   />
                 </div>
                 <div>
-                  <h3 className="font-display text-lg font-semibold">{c.name}</h3>
-                  <p className="mt-1 text-sm text-[color:var(--color-dark)]/80">{c.desc}</p>
+                  <h3 className="font-serif text-[18px] leading-tight text-slate-900">{c.name}</h3>
+                  <p className="mt-2 text-[14px] leading-relaxed text-slate-500">{c.desc}</p>
                 </div>
               </li>
             ))}
@@ -160,39 +163,18 @@ export default function OmOssPage() {
         </Container>
       </section>
 
-      <section className="py-14 md:py-20">
-        <Container>
-          <h2 className="font-display text-2xl font-bold md:text-3xl">Hitta oss</h2>
-          <div className="mt-6 grid gap-6 md:grid-cols-[1fr_1.3fr]">
-            <div className="rounded-[10px] bg-[color:var(--color-bg-light)] p-6 text-sm">
-              <div className="font-display text-lg font-semibold">{BRAND.fullName}</div>
-              <p className="mt-2 text-[color:var(--color-dark)]/85">
-                {BRAND.address}
-                <br />
-                {BRAND.postalCode} {BRAND.city}
-              </p>
-              <p className="mt-3 text-[color:var(--color-dark)]/85">
-                Org.nr {BRAND.orgNr} · F-skatt
-              </p>
-              <p className="mt-3">
-                <a href={`tel:${BRAND.phoneTel}`} className="font-semibold text-[color:var(--color-primary)]">
-                  {BRAND.phone}
-                </a>
-              </p>
-              <p>
-                <a href={`mailto:${BRAND.email}`} className="font-semibold text-[color:var(--color-primary)]">
-                  {BRAND.email}
-                </a>
-              </p>
-            </div>
-            <div className="aspect-[4/3] rounded-[10px] bg-[color:var(--color-bg-light)] grid place-items-center text-sm text-[color:var(--color-dark)]/50">
-              {/* TODO_CONTENT: bädda in Google Maps iframe centrerad på Spjutvägen 5A, Järfälla. */}
-              Karta bäddas in innan launch
-            </div>
+      <section className="py-20 md:py-24">
+        <Container className="flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h2 className="font-serif text-[28px] leading-tight text-slate-900 md:text-[32px]">
+              Hör av dig.
+            </h2>
+            <p className="mt-4 max-w-[52ch] text-[17px] leading-relaxed text-slate-500">
+              Det enklaste sättet att komma vidare är ett kostnadsfritt möte
+              — vi tar med oss erfarenheten, ni berättar om projektet.
+            </p>
           </div>
-          <div className="mt-8">
-            <CtaButton href="/kontakt" variant="primary" size="lg">Kontakta oss</CtaButton>
-          </div>
+          <CtaButton href="/kontakt" variant="primary" size="lg">Kontakta oss</CtaButton>
         </Container>
       </section>
     </>

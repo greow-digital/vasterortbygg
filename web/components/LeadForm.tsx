@@ -42,9 +42,9 @@ export function LeadForm({ title = "Begär kostnadsfri offert" }: { title?: stri
 
   if (submitted) {
     return (
-      <div className="rounded-[10px] bg-white p-6 text-[color:var(--color-dark)] shadow-lg shadow-black/10">
-        <h3 className="font-display text-xl font-semibold">Tack!</h3>
-        <p className="mt-2 text-sm text-[color:var(--color-dark)]/80">
+      <div className="rounded-lg bg-white p-7 text-slate-900 border border-stone-200">
+        <h3 className="font-serif text-2xl">Tack!</h3>
+        <p className="mt-3 text-[15px] text-slate-500">
           Vi återkommer inom kort för att boka in ett kostnadsfritt möte och
           gå igenom ditt projekt.
         </p>
@@ -53,21 +53,20 @@ export function LeadForm({ title = "Begär kostnadsfri offert" }: { title?: stri
   }
 
   const fieldClass =
-    "mt-1 w-full rounded-[5px] border border-[color:var(--color-border)] bg-[color:var(--color-bg-light)] px-3 py-2.5 text-[15px] outline-none focus:border-[color:var(--color-primary)]";
-  const labelClass =
-    "block text-sm font-semibold text-[color:var(--color-primary)]";
+    "w-full px-4 py-3 bg-white border border-stone-300 rounded-md text-[15px] text-slate-900 placeholder:text-stone-500 focus:outline-none focus:border-slate-800 focus:ring-2 focus:ring-sand-400/40 transition-colors duration-200";
+  const labelClass = "block text-[13px] font-medium text-slate-700 mb-2";
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="rounded-[10px] bg-white p-6 text-[color:var(--color-dark)] shadow-lg shadow-black/10"
+      className="rounded-lg bg-white p-7 text-slate-900 border border-stone-200"
     >
-      <h3 className="font-display text-xl font-semibold">{title}</h3>
-      <p className="mt-1 text-sm text-[color:var(--color-dark)]/70">
-        Vi återkommer inom {BRAND.responseTime}.
+      <h3 className="font-serif text-2xl">{title}</h3>
+      <p className="mt-2 text-sm text-slate-500">
+        Vi återkommer inom <span className="tnum">{BRAND.responseTime}</span>.
       </p>
 
-      <div className="mt-4 space-y-4">
+      <div className="mt-6 space-y-5">
         <div>
           <label className={labelClass} htmlFor="lf-name">Namn</label>
           <input
@@ -78,10 +77,10 @@ export function LeadForm({ title = "Begär kostnadsfri offert" }: { title?: stri
             {...register("name", { required: "Ange ditt namn" })}
             aria-invalid={errors.name ? "true" : "false"}
           />
-          {errors.name && <p className="mt-1 text-xs text-red-600">{errors.name.message}</p>}
+          {errors.name && <p className="mt-2 text-[13px] text-[color:var(--danger,#A0413A)]">{errors.name.message}</p>}
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-4">
           <div>
             <label className={labelClass} htmlFor="lf-phone">Telefon</label>
             <input
@@ -89,14 +88,14 @@ export function LeadForm({ title = "Begär kostnadsfri offert" }: { title?: stri
               type="tel"
               autoComplete="tel"
               inputMode="tel"
-              className={fieldClass}
+              className={`${fieldClass} tnum`}
               {...register("phone", {
                 required: "Ange telefonnummer",
                 minLength: { value: 6, message: "För kort nummer" },
               })}
               aria-invalid={errors.phone ? "true" : "false"}
             />
-            {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone.message}</p>}
+            {errors.phone && <p className="mt-2 text-[13px] text-[color:var(--danger,#A0413A)]">{errors.phone.message}</p>}
           </div>
           <div>
             <label className={labelClass} htmlFor="lf-email">E-post</label>
@@ -111,7 +110,7 @@ export function LeadForm({ title = "Begär kostnadsfri offert" }: { title?: stri
               })}
               aria-invalid={errors.email ? "true" : "false"}
             />
-            {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email.message}</p>}
+            {errors.email && <p className="mt-2 text-[13px] text-[color:var(--danger,#A0413A)]">{errors.email.message}</p>}
           </div>
         </div>
 
@@ -130,12 +129,12 @@ export function LeadForm({ title = "Begär kostnadsfri offert" }: { title?: stri
             ))}
             <option value="Annat">Annat</option>
           </select>
-          {errors.projectType && <p className="mt-1 text-xs text-red-600">{errors.projectType.message}</p>}
+          {errors.projectType && <p className="mt-2 text-[13px] text-[color:var(--danger,#A0413A)]">{errors.projectType.message}</p>}
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className={labelClass} htmlFor="lf-area">Plats / kommun <span className="font-normal text-[color:var(--color-dark)]/60">(valfritt)</span></label>
+            <label className={labelClass} htmlFor="lf-area">Plats / kommun <span className="font-normal text-stone-500">(valfritt)</span></label>
             <input id="lf-area" type="text" className={fieldClass} {...register("area")} />
           </div>
           <div>
@@ -150,7 +149,7 @@ export function LeadForm({ title = "Begär kostnadsfri offert" }: { title?: stri
         </div>
 
         <div>
-          <label className={labelClass} htmlFor="lf-message">Berätta kort om projektet <span className="font-normal text-[color:var(--color-dark)]/60">(valfritt)</span></label>
+          <label className={labelClass} htmlFor="lf-message">Berätta kort om projektet <span className="font-normal text-stone-500">(valfritt)</span></label>
           <textarea
             id="lf-message"
             rows={3}
@@ -163,9 +162,9 @@ export function LeadForm({ title = "Begär kostnadsfri offert" }: { title?: stri
           {isSubmitting ? "Skickar…" : BRAND.primaryCta}
         </CtaButton>
 
-        <p className="text-center text-sm text-[color:var(--color-dark)]/70">
+        <p className="text-center text-sm text-slate-500">
           Eller ring oss:{" "}
-          <a href={`tel:${BRAND.phoneTel}`} className="font-semibold text-[color:var(--color-primary)]">
+          <a href={`tel:${BRAND.phoneTel}`} className="tnum font-medium text-slate-800 hover:underline hover:decoration-sand-400 hover:decoration-2 underline-offset-4">
             {BRAND.phone}
           </a>
         </p>

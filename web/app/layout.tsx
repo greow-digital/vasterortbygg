@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
-import { Manrope, Inter } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { BRAND } from "@/lib/brand";
 
-const manrope = Manrope({
+const fraunces = Fraunces({
   subsets: ["latin"],
+  variable: "--font-fraunces",
+  axes: ["opsz"],
   display: "swap",
-  variable: "--font-heading",
-  weight: ["500", "600", "700", "800"],
 });
 
 const inter = Inter({
   subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-inter",
   display: "swap",
-  variable: "--font-body",
-  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -33,9 +33,7 @@ export const metadata: Metadata = {
     siteName: BRAND.shortName,
     images: ["/og-image.jpg"],
   },
-  twitter: {
-    card: "summary_large_image",
-  },
+  twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },
 };
 
@@ -45,11 +43,12 @@ export default function RootLayout({
   return (
     <html
       lang="sv"
-      className={`${manrope.variable} ${inter.variable} h-full`}
+      className={`${fraunces.variable} ${inter.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col bg-white text-[color:var(--color-dark)]">
+      <body className="min-h-full flex flex-col">
+        <a href="#main" className="skip-link">Hoppa till innehåll</a>
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main" className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>

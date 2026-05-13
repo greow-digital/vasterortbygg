@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import { BRAND } from "@/lib/brand";
 import { Container } from "@/components/Container";
 import { CtaButton } from "@/components/CtaButton";
@@ -60,23 +60,23 @@ export default function ProcessPage() {
         crumbs={[{ label: "Start", href: "/" }, { label: "Process" }]}
       />
 
-      <section className="py-14 md:py-20">
-        <Container>
-          <ol className="space-y-10">
+      <section className="py-20 md:py-24">
+        <Container narrow>
+          <ol className="space-y-16">
             {STEPS.map((s, i) => (
-              <li key={s.title} className="grid gap-6 md:grid-cols-[120px_1fr]">
-                <div className="font-display text-5xl font-bold text-[color:var(--color-primary)] md:text-6xl">
+              <li key={s.title} className="grid gap-8 md:grid-cols-[120px_1fr] md:gap-12">
+                <div className="font-serif text-[48px] leading-none text-sand-500 tnum md:text-[56px]">
                   {String(i + 1).padStart(2, "0")}
                 </div>
                 <div>
-                  <h2 className="font-display text-2xl font-bold md:text-3xl">{s.title}</h2>
-                  <p className="mt-3 max-w-2xl text-[17px] leading-relaxed text-[color:var(--color-dark)]/85">
+                  <h2 className="font-serif text-[26px] leading-tight text-slate-900 md:text-[30px]">{s.title}</h2>
+                  <p className="mt-4 max-w-[60ch] text-[17px] leading-relaxed text-slate-500">
                     {s.body}
                   </p>
-                  <ul className="mt-4 grid gap-2 md:grid-cols-3">
+                  <ul className="mt-6 grid gap-2 md:grid-cols-3">
                     {s.out.map((o) => (
-                      <li key={o} className="flex items-start gap-2 text-sm text-[color:var(--color-dark)]/85">
-                        <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-[color:var(--color-primary)]" aria-hidden />
+                      <li key={o} className="flex items-start gap-2 text-[14px] text-slate-700">
+                        <CheckCircle size={18} className="mt-0.5 shrink-0 text-sand-400" aria-hidden />
                         <span>{o}</span>
                       </li>
                     ))}
@@ -88,22 +88,20 @@ export default function ProcessPage() {
         </Container>
       </section>
 
-      <section className="bg-[color:var(--color-dark)] py-14 text-white md:py-20">
-        <Container className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+      <section className="bg-slate-800 py-20 text-stone-50 md:py-24">
+        <Container className="flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between">
           <div>
-            <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
+            <p className="text-[11px] tracking-[0.14em] uppercase text-sand-300 font-medium">Nästa steg</p>
+            <h2 className="mt-4 max-w-[24ch] font-serif text-[32px] leading-tight text-stone-50 md:text-[40px]">
               Klar med planeringen? Vi börjar med ett möte.
             </h2>
-            <p className="mt-3 max-w-2xl text-[17px] text-white/85">
+            <p className="mt-5 max-w-[52ch] text-[17px] leading-relaxed text-stone-300">
               Kostnadsfritt och utan förbindelser — du får en bedömning och en
               känsla för upplägget innan vi går vidare.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <CtaButton href="/offert" variant="primary" size="lg">{BRAND.primaryCta}</CtaButton>
-            <CtaButton href={`tel:${BRAND.phoneTel}`} variant="secondary" size="lg">
-              Ring {BRAND.phone}
-            </CtaButton>
           </div>
         </Container>
       </section>

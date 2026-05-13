@@ -16,32 +16,36 @@ export function PageHero({
   crumbs?: Crumb[];
 }) {
   return (
-    <section className="bg-[color:var(--color-dark)] text-white">
-      <Container className="py-12 md:py-16">
+    <section className="bg-stone-50 border-b border-stone-200">
+      <Container className="pt-20 pb-16 md:pt-24 md:pb-20">
         {crumbs && crumbs.length > 0 && (
-          <nav aria-label="Brödsmulor" className="mb-5 flex flex-wrap items-center gap-1 text-sm text-white/70">
+          <nav aria-label="Brödsmulor" className="mb-6 flex flex-wrap items-center gap-1 text-[13px] text-stone-500">
             {crumbs.map((c, i) => (
               <span key={`${c.label}-${i}`} className="inline-flex items-center gap-1">
                 {c.href ? (
-                  <Link href={c.href} className="hover:text-white">{c.label}</Link>
+                  <Link href={c.href} className="hover:text-slate-900 underline decoration-transparent decoration-1 underline-offset-4 hover:decoration-sand-400 hover:decoration-2">
+                    {c.label}
+                  </Link>
                 ) : (
-                  <span className="text-white/90">{c.label}</span>
+                  <span className="text-slate-700">{c.label}</span>
                 )}
-                {i < crumbs.length - 1 && <ChevronRight size={14} aria-hidden className="text-white/40" />}
+                {i < crumbs.length - 1 && <ChevronRight size={14} aria-hidden className="text-stone-400" />}
               </span>
             ))}
           </nav>
         )}
         {eyebrow && (
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
+          <p className="text-[11px] tracking-[0.14em] uppercase text-stone-500 font-medium">
             {eyebrow}
           </p>
         )}
-        <h1 className="mt-3 max-w-3xl font-display text-4xl font-bold leading-[1.1] text-white md:text-5xl">
+        <h1 className="mt-5 max-w-[18ch] font-serif text-[32px] leading-[1.1] text-slate-900 md:text-[44px] lg:text-[48px]">
           {title}
         </h1>
         {intro && (
-          <p className="mt-4 max-w-2xl text-lg text-white/85">{intro}</p>
+          <p className="mt-6 max-w-[52ch] text-[17px] leading-relaxed text-slate-500 md:text-[18px]">
+            {intro}
+          </p>
         )}
       </Container>
     </section>

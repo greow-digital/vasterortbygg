@@ -1,58 +1,143 @@
 @import "tailwindcss";
 
-/**
- * Color tokens — placeholders. Replace hex values once
- * BRAND-PROFILE.md is filled in (see 05-DESIGN.md).
- */
+/* ---------- Theme tokens (Tailwind v4 @theme) ---------- */
+@theme {
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+
+  /* Slate — primär identitet (overrides Tailwind default) */
+  --color-slate-50:  #F2F4F8;
+  --color-slate-100: #DDE2EB;
+  --color-slate-200: #B8C0D0;
+  --color-slate-300: #8993AA;
+  --color-slate-400: #5D6982;
+  --color-slate-500: #3D4960;
+  --color-slate-600: #2C374C;
+  --color-slate-700: #1F2A3E;
+  --color-slate-800: #15203A;
+  --color-slate-900: #0E1729;
+  --color-slate-950: #07101E;
+
+  /* Sand — varm accent */
+  --color-sand-50:  #FAF6EE;
+  --color-sand-100: #F2E9D2;
+  --color-sand-200: #E7D5AC;
+  --color-sand-300: #D8BE82;
+  --color-sand-400: #C9A875;
+  --color-sand-500: #B58F58;
+  --color-sand-600: #9A7642;
+  --color-sand-700: #7C5C32;
+  --color-sand-800: #5C4424;
+  --color-sand-900: #3D2D17;
+
+  /* Stone — neutrala ytor (overrides Tailwind default) */
+  --color-stone-50:  #FAF7F1;
+  --color-stone-100: #F2EDE3;
+  --color-stone-150: #EAE4D6;
+  --color-stone-200: #E0D8C7;
+  --color-stone-300: #C9C0AD;
+  --color-stone-400: #A89F8B;
+  --color-stone-500: #847C6B;
+  --color-stone-600: #5F5A4E;
+  --color-stone-700: #423E36;
+  --color-stone-800: #2A2823;
+  --color-stone-900: #181712;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 24px;
+
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+}
+
+/* ---------- Semantic tokens (use these in components when meaning matters) ---------- */
 :root {
-  --color-primary: #c8102e;        /* TODO_PROFILE — CTA / links */
-  --color-primary-hover: #a30d24;  /* TODO_PROFILE */
-  --color-dark: #1a1a1a;           /* text, footer */
-  --color-accent: #f2a900;         /* TODO_PROFILE — highlights */
-  --color-bg-light: #f5f5f5;       /* section backgrounds */
-  --color-border: #bdbdbd;
-  --color-white: #ffffff;
+  --bg-page:        var(--color-stone-50);
+  --bg-surface:     #ffffff;
+  --bg-surface-alt: var(--color-stone-100);
+  --bg-inverse:     var(--color-slate-800);
+
+  --text-primary:   var(--color-slate-900);
+  --text-secondary: var(--color-slate-500);
+  --text-tertiary:  var(--color-stone-500);
+  --text-on-dark:   var(--color-stone-50);
+  --text-on-accent: var(--color-slate-900);
+
+  --border-subtle:  var(--color-stone-200);
+  --border-default: var(--color-stone-300);
+  --border-strong:  var(--color-slate-800);
+
+  --brand:          var(--color-slate-800);
+  --brand-hover:    var(--color-slate-700);
+  --accent:         var(--color-sand-400);
+  --accent-hover:   var(--color-sand-500);
+  --focus-ring:     var(--color-sand-400);
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 41, 0.06);
+  --shadow-md: 0 4px 12px rgba(15, 23, 41, 0.08);
 }
 
-@theme inline {
-  --color-brand: var(--color-primary);
-  --color-brand-hover: var(--color-primary-hover);
-  --color-ink: var(--color-dark);
-  --color-accent: var(--color-accent);
-  --color-surface: var(--color-bg-light);
-  --color-line: var(--color-border);
-
-  --font-sans: var(--font-body);
-  --font-display: var(--font-heading);
-
-  --breakpoint-md: 810px;
-  --breakpoint-lg: 1200px;
-}
-
+/* ---------- Base ---------- */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: var(--color-white);
-  color: var(--color-dark);
+  background: var(--bg-page);
+  color: var(--text-primary);
   font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+.font-serif {
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+}
+
+/* No global heading color — sections set their own via Tailwind text-* classes */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  letter-spacing: -0.02em;
-  /* color inherits — `text-white` on dark sections must not be overridden */
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  letter-spacing: -0.015em;
 }
 
-h1 {
-  letter-spacing: -0.03em;
-}
+h1 { letter-spacing: -0.02em; line-height: 1.05; }
+h2 { letter-spacing: -0.01em; line-height: 1.15; }
 
-/* Focus visibility for keyboard users (SEO.md §11.3 a11y) */
+/* Tabular numerals for numeric content */
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* Focus ring — sand-400 at 40% alpha, 2px */
 *:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid rgb(201 168 117 / 0.6);
   outline-offset: 3px;
+}
+
+/* Respect prefers-reduced-motion (§8.2) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--bg-inverse);
+  color: var(--text-on-dark);
+  padding: 12px 20px;
+  z-index: 100;
+}
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
 }

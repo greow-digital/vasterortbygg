@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Hammer } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { BRAND, SERVICES } from "@/lib/brand";
 import { Container } from "@/components/Container";
 import { CtaButton } from "@/components/CtaButton";
@@ -28,27 +28,29 @@ export default function TjansterPage() {
       <PageHero
         eyebrow="Tjänster"
         title="Det vi gör — och tar fullt ansvar för"
-        intro="Vi är ett byggföretag som tar helhetsansvar — från en enskild WC-ombyggnad till stambyte i en BRF. Badrum och kök är våra signaturprodukter, men vi koordinerar gärna underentreprenörer för el och VVS i samma projekt."
+        intro="Vi är ett byggföretag som tar helhetsansvar — från en enskild WC-ombyggnad till stambyte i en BRF. Badrum och kök är våra signaturprodukter, och vi koordinerar gärna underentreprenörer för el och VVS i samma projekt."
         crumbs={[{ label: "Start", href: "/" }, { label: "Tjänster" }]}
       />
 
-      <section className="py-14 md:py-20">
+      <section className="py-20 md:py-24">
         <Container>
-          <h2 className="font-display text-2xl font-bold md:text-3xl">Huvudtjänster</h2>
-          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <p className="text-[11px] tracking-[0.14em] uppercase text-stone-500 font-medium">Huvudtjänster</p>
+          <h2 className="mt-4 font-serif text-[28px] leading-tight text-slate-900 md:text-[32px]">
+            Åtta tjänster — samma process
+          </h2>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((s) => (
               <Link
                 key={s.slug}
                 href={`/tjanster/${s.slug}`}
-                className="group rounded-[10px] border border-[color:var(--color-border)]/50 bg-white p-6 transition-shadow hover:shadow-lg"
+                className="group rounded-lg border border-stone-200 bg-white p-6 transition-colors duration-200 hover:border-slate-800"
               >
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[color:var(--color-bg-light)] text-[color:var(--color-primary)]">
-                  <Hammer size={18} aria-hidden />
-                </div>
-                <h3 className="mt-4 font-display text-xl font-semibold">{s.label}</h3>
-                <p className="mt-2 text-sm text-[color:var(--color-dark)]/80">{s.blurb}</p>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-[color:var(--color-primary)]">
-                  Läs mer <ArrowRight size={14} aria-hidden className="transition-transform group-hover:translate-x-0.5" />
+                <div className="text-[11px] tracking-[0.14em] uppercase text-stone-500 font-medium">Tjänst</div>
+                <h3 className="mt-3 font-serif text-[22px] leading-tight text-slate-900">{s.label}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-slate-500">{s.blurb}</p>
+                <span className="mt-5 inline-flex items-center gap-2 text-[14px] font-medium text-slate-800">
+                  Läs mer <ArrowRight size={14} aria-hidden />
                 </span>
               </Link>
             ))}
@@ -56,16 +58,15 @@ export default function TjansterPage() {
         </Container>
       </section>
 
-      <section className="bg-[color:var(--color-bg-light)] py-14 md:py-20">
+      <section className="bg-stone-100 py-20 md:py-24">
         <Container>
-          <h2 className="font-display text-2xl font-bold md:text-3xl">Övrigt vi gör</h2>
-          <p className="mt-3 max-w-2xl text-[17px] text-[color:var(--color-dark)]/85">
-            I samband med större projekt — eller som fristående uppdrag —
-            utför vi även:
-          </p>
-          <ul className="mt-6 grid gap-3 md:grid-cols-2">
+          <p className="text-[11px] tracking-[0.14em] uppercase text-stone-500 font-medium">Övrigt vi gör</p>
+          <h2 className="mt-4 font-serif text-[28px] leading-tight text-slate-900 md:text-[32px]">
+            I samband med större projekt — eller fristående
+          </h2>
+          <ul className="mt-10 grid gap-3 md:grid-cols-2">
             {EXTRA_SERVICES.map((s) => (
-              <li key={s} className="rounded-[10px] bg-white px-4 py-3 text-sm text-[color:var(--color-dark)]/85">
+              <li key={s} className="rounded-md border border-stone-200 bg-white px-5 py-4 text-[15px] text-slate-700">
                 {s}
               </li>
             ))}
@@ -73,22 +74,20 @@ export default function TjansterPage() {
         </Container>
       </section>
 
-      <section className="py-14 md:py-20">
-        <Container className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+      <section className="py-20 md:py-24">
+        <Container className="flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between">
           <div>
-            <h2 className="font-display text-2xl font-bold md:text-3xl">
+            <h2 className="font-serif text-[28px] leading-tight text-slate-900 md:text-[32px]">
               Osäker på vad ditt projekt behöver?
             </h2>
-            <p className="mt-3 max-w-2xl text-[17px] text-[color:var(--color-dark)]/85">
+            <p className="mt-4 max-w-[52ch] text-[17px] leading-relaxed text-slate-500">
               Ring oss eller skicka en förfrågan — vi gör en första bedömning
               utan kostnad och återkommer med offert och tidplan.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <CtaButton href="/offert" variant="primary" size="lg">{BRAND.primaryCta}</CtaButton>
-            <CtaButton href={`tel:${BRAND.phoneTel}`} variant="secondary" size="lg">
-              Ring {BRAND.phone}
-            </CtaButton>
+            <CtaButton href={`tel:${BRAND.phoneTel}`} variant="secondary" size="lg">Ring {BRAND.phone}</CtaButton>
           </div>
         </Container>
       </section>
