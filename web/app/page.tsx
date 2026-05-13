@@ -12,6 +12,7 @@ import { Container } from "@/components/Container";
 import { CtaButton } from "@/components/CtaButton";
 import { LeadForm } from "@/components/LeadForm";
 import { TrustStat } from "@/components/TrustStat";
+import { HeroBackground } from "@/components/HeroBackground";
 
 const PROCESS = [
   {
@@ -41,14 +42,10 @@ export default function HomePage() {
     <>
       {/* === HERO (full-bleed image + solid text card) === */}
       <section className="relative isolate overflow-hidden bg-slate-900">
-        <Image
+        <HeroBackground
           src="/hero.png"
           alt="Badrumsrenovering med ribbad kalksten, valnötskommod och svartram-dusch"
-          fill
-          priority
-          fetchPriority="high"
-          sizes="100vw"
-          className="object-cover"
+          speed={0.25}
         />
         <Container className="relative">
           <div className="grid min-h-[640px] items-center py-20 md:min-h-[680px] md:py-24 lg:grid-cols-12 lg:py-28">
